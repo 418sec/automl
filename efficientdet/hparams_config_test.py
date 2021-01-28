@@ -63,7 +63,7 @@ class HparamsConfigTest(tf.test.TestCase):
     yaml_file_path2 = os.path.join(tmpdir, 'y.yaml')
     c.save_to_yaml(yaml_file_path2)
     with open(yaml_file_path2, 'r') as f:
-      config_dict = yaml.load(f, Loader=yaml.FullLoader)
+      config_dict = yaml.load(f, Loader=yaml.SafeFullLoader)
     self.assertEqual(config_dict, {'x': 2, 'y': {'z': 'test'}})
 
   def test_config_override_recursive(self):
